@@ -7,11 +7,16 @@ export class unit {
             this.img,
             this.width,
             this.height
-        ] = [x,y,ctx,img,width,height]
+        ] = [x, y, ctx, img, width, height]
     }
 
     draw() {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
+    }
 
+    update(dx,dy) {
+        this.x += dx
+        this.y += dy
     }
 
     showValues() {
