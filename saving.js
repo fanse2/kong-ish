@@ -16,18 +16,17 @@ test.showValues()
 
 let initString = [
     'wake up nemo...',
-    'hansoom has you...',
-    'kill the white rabbit...'
+    'metress has you...',
+    'kill the red insects...'
 ]
-
 let initStringIdx = 0
 let initStringNum = 0
 
 function prolog() {
     let interval = 100
+
     if(initStringNum > initString[initStringIdx].length) {
-        initStringIdx++
-        if(initString.length==initStringIdx) {
+        if(initString.length === ++initStringIdx) {
             console.log('end prolog-loop!')
             return
         }
