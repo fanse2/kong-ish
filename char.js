@@ -23,5 +23,3 @@ export class unit {
         console.log(this.x,this.y,this.ctx,this.img,this.width,this.height)
     }
 }
-
-

@@ -14,22 +14,34 @@ let test = new unit(100,100,'ctx','img',24,24)
 test.showValues()
 
 
-let initString = 'ENJOY the Game!'
+let initString = [
+    'wake up nemo...',
+    'hansoom has you...',
+    'kill the white rabbit...'
+]
+
+let initStringIdx = 0
 let initStringNum = 0
-let initStringLength = initString.length
 
 function prolog() {
-    if(initStringNum >= initStringLength) {
-        console.log('end prolog-loop!')
-        return
+    let interval = 100
+    if(initStringNum > initString[initStringIdx].length) {
+        initStringIdx++
+        if(initString.length==initStringIdx) {
+            console.log('end prolog-loop!')
+            return
+        }
+        initStringNum = 0
     }
 
+    if(initStringNum === initString[initStringIdx].length) interval = 1000
+
     ctx.clearRect(0, 0, CANVAS.clientWidth, CANVAS.clientHeight)
-    ctx.font = "30px Arial";
-    ctx.fillStyle = 'yellow'
-    ctx.fillText(initString.substring(0,initStringNum),100,100)
+    ctx.font = "30px monospace";
+    ctx.fillStyle = 'MediumSpringGreen'
+    ctx.fillText(initString[initStringIdx].substring(0,initStringNum)+'_',50,100)
     initStringNum++
-    setTimeout(prolog, 200)
+    setTimeout(prolog, interval)
 }
 
 function initStage() {
@@ -39,4 +51,5 @@ function initStage() {
 
 
 prolog()
+console.log('after prolog')
 //initStage()
