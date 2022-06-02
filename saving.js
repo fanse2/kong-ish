@@ -3,6 +3,8 @@ import {unit} from './char.js'
 const CANVAS = document.querySelector('#grid')
 const ctx = CANVAS.getContext('2d')
 
+const btnStart = document.querySelector('.startButton')
+
 const gSetting = {
     stage : 1,
     score : 0
@@ -11,8 +13,6 @@ const gSetting = {
 let intGame
 //x,y,ctx,img,width,height
 let test = new unit(100,100,'ctx','img',24,24)
-test.showValues()
-
 
 let initString = [
     'wake up nemo...',
@@ -29,7 +29,7 @@ function prolog() {
     if(initStringNum > initString[initStringIdx].length) {
         if(initString.length === ++initStringIdx) {
             console.log('end prolog-loop!')
-            codeRain()
+            codeRain()  // run CodeRain............
             return
         }
         initStringNum = 0
@@ -38,7 +38,7 @@ function prolog() {
     if(initStringNum === initString[initStringIdx].length) interval = 1000
 
     ctx.clearRect(0, 0, CANVAS.clientWidth, CANVAS.clientHeight)
-    ctx.font = "30px monospace";
+    ctx.font = "30px monospace"
     ctx.fillStyle = 'MediumSpringGreen'
     ctx.fillText(initString[initStringIdx].substring(0,initStringNum)+'_',50,100)
     initStringNum++
@@ -81,7 +81,7 @@ let codeString = [
 function codeRain() {
     ctx.clearRect(0,0,CANVAS.clientWidth,CANVAS.clientHeight)
 
-    ctx.font = "6px monospace"
+    ctx.font = "7px monospace"
     ctx.fillStyle = 'MediumSpringGreen'
 
     for(let k=0; k<codeString.length; k++) {
@@ -102,13 +102,27 @@ function codeRain() {
 }
 
 function initStage() {
-    ctx.fillStyle = 'yellow'
-    ctx.fillText('test',100,100)
+    ctx.beginPath()
+    ctx.strokeStyle = "#FF0000";
+    ctx.lineWidth = 3
+    
+    for(let i=0; i< 6; i++){
+        ctx.moveTo(0,70*i+120)
+        ctx.lineTo(480,70*i+120)
+        
+    }
+
+    ctx.strokeRect(150,150,32,32)
+    ctx.stroke()
+
+
+}
+
+//prolog()
+
+function start() {
+    initStage()
 }
 
 
-prolog()
-
-//codeRain()
-
-//initStage()
+btnStart.addEventListener('click',()=>start())
