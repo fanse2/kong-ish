@@ -17,7 +17,8 @@ test.showValues()
 let initString = [
     'wake up nemo...',
     'metress has you...',
-    'kill the red insects...'
+    'kill the red insects...',
+    'knock, knock, nemo.'
 ]
 let initStringIdx = 0
 let initStringNum = 0
@@ -28,6 +29,7 @@ function prolog() {
     if(initStringNum > initString[initStringIdx].length) {
         if(initString.length === ++initStringIdx) {
             console.log('end prolog-loop!')
+            codeRain()
             return
         }
         initStringNum = 0
@@ -43,6 +45,62 @@ function prolog() {
     setTimeout(prolog, interval)
 }
 
+
+let codeString = [
+    `나라의말이중국과달라문자로서로통하지아니하여서`,
+    `이런까닭으로어리석은백성이말하고자하는바가있어도`,
+    `마침내제뜻을능히펴지못하는사람이많다`,
+    `내가이를위하여가엾이여겨새로스물여덟자를만드니`,
+    `사람마다하여금쉬이익혀날마다씀에편안하게하고자할따름이다`,
+    `나라의말이중국과달라문자로서로통하지아니하여서`,
+    `이런까닭으로어리석은백성이말하고자하는바가있어도`,
+    `마침내제뜻을능히펴지못하는사람이많다`,
+    `내가이를위하여가엾이여겨새로스물여덟자를만드니`,
+    `사람마다하여금쉬이익혀날마다씀에편안하게하고자할따름이다`,
+    `나라의말이중국과달라문자로서로통하지아니하여서`,
+    `이런까닭으로어리석은백성이말하고자하는바가있어도`,
+    `마침내제뜻을능히펴지못하는사람이많다`,
+    `내가이를위하여가엾이여겨새로스물여덟자를만드니`,
+    `사람마다하여금쉬이익혀날마다씀에편안하게하고자할따름이다`,
+    `나라의말이중국과달라문자로서로통하지아니하여서`,
+    `이런까닭으로어리석은백성이말하고자하는바가있어도`,
+    `마침내제뜻을능히펴지못하는사람이많다`,
+    `내가이를위하여가엾이여겨새로스물여덟자를만드니`,
+    `사람마다하여금쉬이익혀날마다씀에편안하게하고자할따름이다`,
+    `나라의말이중국과달라문자로서로통하지아니하여서`,
+    `이런까닭으로어리석은백성이말하고자하는바가있어도`,
+    `마침내제뜻을능히펴지못하는사람이많다`,
+    `내가이를위하여가엾이여겨새로스물여덟자를만드니`,
+    `사람마다하여금쉬이익혀날마다씀에편안하게하고자할따름이다`,
+    `나라의말이중국과달라문자로서로통하지아니하여서`,
+    `이런까닭으로어리석은백성이말하고자하는바가있어도`,
+    `마침내제뜻을능히펴지못하는사람이많다`,
+    `내가이를위하여가엾이여겨새로스물여덟자를만드니`,
+    `사람마다하여금쉬이익혀날마다씀에편안하게하고자할따름이다`,
+]
+function codeRain() {
+    ctx.clearRect(0,0,CANVAS.clientWidth,CANVAS.clientHeight)
+
+    ctx.font = "6px monospace"
+    ctx.fillStyle = 'MediumSpringGreen'
+
+    for(let k=0; k<codeString.length; k++) {
+        let rand = Math.floor(Math.random()*100)
+        
+        for(let i=0; i<codeString[k].length; i++) {
+            setTimeout(()=>{        
+                for(let j=0; j<=i; j++) {
+                    if(j == i) ctx.fillStyle = 'white'
+                    else ctx.fillStyle = 'MediumSpringGreen'
+                    
+                    ctx.fillText(codeString[k][j], 16*k, rand +j*18)
+                }
+                
+            },100*i)
+        }
+    }
+}
+
 function initStage() {
     ctx.fillStyle = 'yellow'
     ctx.fillText('test',100,100)
@@ -50,5 +108,7 @@ function initStage() {
 
 
 prolog()
-console.log('after prolog')
+
+//codeRain()
+
 //initStage()
